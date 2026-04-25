@@ -3,16 +3,16 @@ package userserializerimplementation
 import (
 	"net/http"
 
-	"github.com/alxhtp/monogo/internal/entity"
-	entitybase "github.com/alxhtp/monogo/internal/entity/base"
-	userserializer "github.com/alxhtp/monogo/internal/serializer/user"
-	"github.com/alxhtp/monogo/pkg/constant"
+	"github.com/ArthurTirta/monogo/internal/entity"
+	entitybase "github.com/ArthurTirta/monogo/internal/entity/base"
+	userserializer "github.com/ArthurTirta/monogo/internal/serializer/user"
+	"github.com/ArthurTirta/monogo/pkg/constant"
 
-	"github.com/alxhtp/monogo/pkg/dto"
-	dtobase "github.com/alxhtp/monogo/pkg/dto/base"
-	databasehelper "github.com/alxhtp/monogo/pkg/helper/database"
-	parserhelper "github.com/alxhtp/monogo/pkg/helper/parser"
-	queryhelper "github.com/alxhtp/monogo/pkg/helper/query"
+	"github.com/ArthurTirta/monogo/pkg/dto"
+	dtobase "github.com/ArthurTirta/monogo/pkg/dto/base"
+	databasehelper "github.com/ArthurTirta/monogo/pkg/helper/database"
+	parserhelper "github.com/ArthurTirta/monogo/pkg/helper/parser"
+	queryhelper "github.com/ArthurTirta/monogo/pkg/helper/query"
 )
 
 type userSerializer struct{}

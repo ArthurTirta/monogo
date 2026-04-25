@@ -1,9 +1,9 @@
 package entity
 
 import (
-	entitybase "github.com/alxhtp/monogo/internal/entity/base"
-	"github.com/alxhtp/monogo/pkg/constant"
-	databasehelper "github.com/alxhtp/monogo/pkg/helper/database"
+	entitybase "github.com/ArthurTirta/monogo/internal/entity/base"
+	"github.com/ArthurTirta/monogo/pkg/constant"
+	databasehelper "github.com/ArthurTirta/monogo/pkg/helper/database"
 	"github.com/google/uuid"
 )
 

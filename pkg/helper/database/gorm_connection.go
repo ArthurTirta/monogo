@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/alxhtp/monogo/config"
+	"github.com/ArthurTirta/monogo/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

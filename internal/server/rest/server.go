@@ -11,9 +11,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/alxhtp/monogo/config"
-	"github.com/alxhtp/monogo/internal/server/rest/router"
-	databasehelper "github.com/alxhtp/monogo/pkg/helper/database"
+	"github.com/ArthurTirta/monogo/config"
+	"github.com/ArthurTirta/monogo/internal/server/rest/router"
+	databasehelper "github.com/ArthurTirta/monogo/pkg/helper/database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/basicauth"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -123,5 +123,7 @@ func (s *RestServer) Shutdown() error {
 
 func (s *RestServer) RegisterRoutes() {
 	dependencies := router.NewDependencies(s.app, s.db, s.cfg)
+	// register auth routes first
+	router.AuthRouter(dependencies)
 	router.UserRouter(dependencies)
 }

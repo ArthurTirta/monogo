@@ -1,7 +1,7 @@
 package dto
 
 import (
-	dtobase "github.com/alxhtp/monogo/pkg/dto/base"
+	dtobase "github.com/ArthurTirta/monogo/pkg/dto/base"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 )

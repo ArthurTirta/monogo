@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 
-	"github.com/alxhtp/monogo/internal/entity"
-	entitybase "github.com/alxhtp/monogo/internal/entity/base"
-	userrepository "github.com/alxhtp/monogo/internal/repository/user"
+	"github.com/ArthurTirta/monogo/internal/entity"
+	entitybase "github.com/ArthurTirta/monogo/internal/entity/base"
+	userrepository "github.com/ArthurTirta/monogo/internal/repository/user"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )

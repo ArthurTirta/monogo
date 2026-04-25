@@ -3,8 +3,8 @@ package userrepository
 import (
 	"context"
 
-	"github.com/alxhtp/monogo/internal/entity"
-	entitybase "github.com/alxhtp/monogo/internal/entity/base"
+	"github.com/ArthurTirta/monogo/internal/entity"
+	entitybase "github.com/ArthurTirta/monogo/internal/entity/base"
 	"github.com/google/uuid"
 )
 

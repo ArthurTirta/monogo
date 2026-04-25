@@ -1,10 +1,10 @@
 package router
 
 import (
-	"github.com/alxhtp/monogo/internal/handler"
-	userrepository "github.com/alxhtp/monogo/internal/repository/user/implementation"
-	userserializer "github.com/alxhtp/monogo/internal/serializer/user/implementation"
-	userusecase "github.com/alxhtp/monogo/internal/usecase/user/implementation"
+	"github.com/ArthurTirta/monogo/internal/handler"
+	userrepository "github.com/ArthurTirta/monogo/internal/repository/user/implementation"
+	userserializer "github.com/ArthurTirta/monogo/internal/serializer/user/implementation"
+	userusecase "github.com/ArthurTirta/monogo/internal/usecase/user/implementation"
 )
 
 func UserRouter(deps *Dependencies) {

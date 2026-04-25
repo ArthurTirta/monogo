@@ -3,8 +3,8 @@ package userusecase
 import (
 	"context"
 
-	"github.com/alxhtp/monogo/pkg/dto"
-	dtobase "github.com/alxhtp/monogo/pkg/dto/base"
+	"github.com/ArthurTirta/monogo/pkg/dto"
+	dtobase "github.com/ArthurTirta/monogo/pkg/dto/base"
 	"github.com/google/uuid"
 )
 

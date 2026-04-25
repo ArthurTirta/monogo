@@ -1,9 +1,9 @@
 package userserializer
 
 import (
-	"github.com/alxhtp/monogo/internal/entity"
-	entitybase "github.com/alxhtp/monogo/internal/entity/base"
-	"github.com/alxhtp/monogo/pkg/dto"
+	"github.com/ArthurTirta/monogo/internal/entity"
+	entitybase "github.com/ArthurTirta/monogo/internal/entity/base"
+	"github.com/ArthurTirta/monogo/pkg/dto"
 )
 
 type UserSerializer interface {

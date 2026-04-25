@@ -8,9 +8,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/alxhtp/monogo/config"
-	_ "github.com/alxhtp/monogo/docs"
-	restserver "github.com/alxhtp/monogo/internal/server/rest"
+	"github.com/ArthurTirta/monogo/config"
+	_ "github.com/ArthurTirta/monogo/docs"
+	restserver "github.com/ArthurTirta/monogo/internal/server/rest"
 )
 
 // Package main provides the API server

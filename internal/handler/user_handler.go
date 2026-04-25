@@ -1,10 +1,10 @@
 package handler
 
 import (
-	userusecase "github.com/alxhtp/monogo/internal/usecase/user"
-	"github.com/alxhtp/monogo/pkg/dto"
-	dtobase "github.com/alxhtp/monogo/pkg/dto/base"
-	errorhelper "github.com/alxhtp/monogo/pkg/helper/error"
+	userusecase "github.com/ArthurTirta/monogo/internal/usecase/user"
+	"github.com/ArthurTirta/monogo/pkg/dto"
+	dtobase "github.com/ArthurTirta/monogo/pkg/dto/base"
+	errorhelper "github.com/ArthurTirta/monogo/pkg/helper/error"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 )
