@@ -1,0 +1,16 @@
+Untuk generate user admin jalankan di folder backend :
+
+go run ./cmd/seed_admin -email your@email.com -password yourpassword
+exam: go run ./cmd/seed_admin -email admin@admin.com -password admin123
+
+recover database
+psql -U <username> -d <nama_database> -f <file_backup.sql>
+
+cek schema database 
+\dt *.*
+
+cek tabel pasar 
+docker exec -it monogo-db psql -U postgres -d monogo -c "SELECT count(*) FROM monogo.pasar;"
+
+
+Ingat DB kita berjalan di port 5433

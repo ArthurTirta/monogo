@@ -2,6 +2,9 @@ package config
 
 import (
 	"fmt"
+	"net/url"
+	"os"
+	"strconv"
 
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
@@ -85,10 +88,45 @@ type SwaggerAuth struct {
 func Load() (*Config, error) {
 	var cfg Config
 
-	_ = godotenv.Load()
+	// Overload will load variables from .env and override any existing
+	// environment variables. This is convenient for local development when
+	// system-level env vars (e.g. DB_PORT) would otherwise take precedence.
+	// For production, ensure proper environment variable management.
+	_ = godotenv.Overload()
 
 	if err := envconfig.Process("", &cfg); err != nil {
 		return nil, fmt.Errorf("envconfig: %w", err)
+	}
+
+	// If DATABASE_URL is provided (common in docker-compose), parse it and
+	// override individual DB fields. Supports URLs like:
+	// postgres://user:pass@host:5432/dbname?sslmode=disable
+	if dbURL := os.Getenv("DATABASE_URL"); dbURL != "" {
+		if u, err := url.Parse(dbURL); err == nil {
+			if u.User != nil {
+				if name := u.User.Username(); name != "" {
+					cfg.DatabaseConfig.DBUser = name
+				}
+				if pass, ok := u.User.Password(); ok {
+					cfg.DatabaseConfig.DBPassword = pass
+				}
+			}
+			if host := u.Hostname(); host != "" {
+				cfg.DatabaseConfig.DBHost = host
+			}
+			if port := u.Port(); port != "" {
+				if p, err := strconv.Atoi(port); err == nil {
+					cfg.DatabaseConfig.DBPort = p
+				}
+			}
+			if db := u.Path; db != "" {
+				// path may start with '/'
+				cfg.DatabaseConfig.DBName = db[1:]
+			}
+			if q := u.Query(); q.Get("sslmode") != "" {
+				cfg.DatabaseConfig.DBSSLMode = q.Get("sslmode")
+			}
+		}
 	}
 
 	return &cfg, nil

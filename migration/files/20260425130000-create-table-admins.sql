@@ -1,6 +1,6 @@
 -- +migrate Up
 CREATE TABLE IF NOT EXISTS "monogo"."admins" (
-    "id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    "id" uuid PRIMARY KEY DEFAULT uuid_generate_v4 (),
     "name" VARCHAR(255),
     "email" VARCHAR(255) NOT NULL UNIQUE,
     "password" VARCHAR(255) NOT NULL,

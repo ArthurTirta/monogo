@@ -11,6 +11,8 @@ import (
 	"syscall"
 	"time"
 
+	"database/sql"
+
 	"github.com/ArthurTirta/monogo/config"
 	"github.com/ArthurTirta/monogo/internal/server/rest/router"
 	databasehelper "github.com/ArthurTirta/monogo/pkg/helper/database"
@@ -46,6 +48,23 @@ func NewRestServer(ctx context.Context, cfg *config.Config) *RestServer {
 	db, err := databasehelper.NewGormDB(ctx, &cfg.DatabaseConfig)
 	if err != nil {
 		log.Fatalf("failed to connect to database: %v", err)
+	}
+
+	// Sanity log for DB configuration (no password)
+	log.Printf("DB config: host=%s port=%d db=%s user=%s", cfg.DatabaseConfig.DBHost, cfg.DatabaseConfig.DBPort, cfg.DatabaseConfig.DBName, cfg.DatabaseConfig.DBUser)
+
+	// Log basic DB info to help ensure we're connecting to the intended database
+	// (do not log credentials)
+	type dbInfo struct {
+		DB   sql.NullString `json:"db"`
+		Addr sql.NullString `json:"addr"`
+		Port sql.NullInt64  `json:"port"`
+	}
+	var info dbInfo
+	if err := db.Raw("SELECT current_database() AS db, inet_server_addr() AS addr, inet_server_port() AS port").Scan(&info).Error; err != nil {
+		log.Printf("warning: failed to query db info: %v", err)
+	} else {
+		log.Printf("connected to database=%s addr=%s port=%v", info.DB.String, info.Addr.String, info.Port.Int64)
 	}
 
 	return &RestServer{
@@ -126,4 +145,6 @@ func (s *RestServer) RegisterRoutes() {
 	// register auth routes first
 	router.AuthRouter(dependencies)
 	router.UserRouter(dependencies)
+	// Pasar (market) read endpoint
+	router.PasarRouter(dependencies)
 }
